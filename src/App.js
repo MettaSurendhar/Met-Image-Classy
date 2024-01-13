@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './App.css';
 import { useState, useEffect, useRef } from 'react';
 import '@tensorflow/tfjs-backend-webgl';
@@ -9,6 +10,7 @@ function App() {
 	const [imageUrl, setImageUrl] = useState(null);
 	const [isImageValid, setIsImageValid] = useState(false);
 	const [results, setResults] = useState(null);
+	const [history, setHistory] = useState([]);
 
 	const imageRef = useRef();
 	const textInputRef = useRef();
@@ -49,6 +51,7 @@ function App() {
 		textInputRef.current.value = '';
 		fileInputRef.current.value = '';
 		setIsImageValid(false);
+		setResults(null);
 	};
 
 	const validateImageUrl = (url) => {
@@ -80,6 +83,12 @@ function App() {
 	useEffect(() => {
 		load();
 	}, []);
+
+	useEffect(() => {
+		if (isImageValid && imageUrl) {
+			setHistory([imageUrl, ...history]);
+		}
+	}, [imageUrl, isImageValid]);
 
 	if (isModelLoading) {
 		return <div>Loading...</div>;
@@ -162,6 +171,30 @@ function App() {
 					</div>
 				)}
 			</div>
+			{history.length > 0 && (
+				<div className='recentPredictions'>
+					<h2>Recent Images</h2>
+					<div className='recentImages'>
+						{history.map((image, index) => {
+							return (
+								<div
+									className='recentPrediction'
+									key={`${image}${index}`}
+								>
+									<img
+										src={image}
+										alt='recent prediction'
+										onClick={() => {
+											setIsImageValid(true);
+											setImageUrl(image);
+										}}
+									/>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }

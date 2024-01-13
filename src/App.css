@@ -29,16 +29,55 @@
 	align-items: center;
 	justify-content: left;
 	margin-left: 20px;
+	min-height: 70vh;
+}
+
+.inputHolder {
+	display: flex;
+	column-gap: 20px;
+	align-items: center;
+	justify-content: left;
+	padding: 20px;
+}
+.uploadTextInput {
+	width: 400px;
+	padding: 8px;
+}
+
+.uploadImg {
+	cursor: pointer;
+	background-color: #333;
+	color: #eee;
+	padding: 8px 14px;
+	border-radius: 2px;
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.or {
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.uploadFileInput {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .resultsHolder {
 	display: flex;
 	flex-direction: column;
 	row-gap: 12px;
+	flex-wrap: wrap;
 }
 
 .result {
 	padding: 12px 18px;
+	padding-right: 10px;
 	border: solid #000 2px;
 	display: flex;
 	flex-direction: column;
@@ -75,42 +114,6 @@
 	color: #f6f4f4;
 }
 
-.inputHolder {
-	display: flex;
-	column-gap: 20px;
-	align-items: center;
-	justify-content: left;
-	padding: 20px 28px;
-}
-.uploadTextInput {
-	width: 400px;
-	padding: 8px;
-}
-
-.uploadImg {
-	cursor: pointer;
-	background-color: #333;
-	color: #eee;
-	padding: 8px 14px;
-	border-radius: 2px;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 14px;
-}
-
-.or {
-	text-transform: uppercase;
-	font-size: 18px;
-	font-weight: 600;
-}
-
-.uploadFileInput {
-	width: 0;
-	height: 0;
-	opacity: 0;
-	visibility: hidden;
-}
-
 .buttonHolder {
 	display: flex;
 	column-gap: 20px;
@@ -131,4 +134,25 @@
 .cancel {
 	background-color: #888;
 	color: #fff;
+}
+
+.recentPredictions {
+	background-color: #99999974;
+	margin-top: 30px;
+	padding: 4px 20px;
+	border-radius: 2px;
+}
+
+.recentImages {
+	display: flex;
+	column-gap: 14px;
+	row-gap: 10px;
+	flex-wrap: wrap;
+}
+
+.recentPrediction img {
+	width: 180px;
+	height: 180px;
+	object-fit: cover;
+	border-radius: 2px;
 }
