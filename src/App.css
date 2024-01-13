@@ -7,20 +7,7 @@
 	font-size: 34px;
 	text-align: center;
 	align-content: center;
-}
-
-.mainContent {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.imageHolder img {
-	width: 50vw;
-	height: 50vh;
-	object-fit: contain;
-	margin: 14px auto;
+	position: sticky;
 }
 
 .mainWrapper {
@@ -28,8 +15,34 @@
 	column-gap: 10vh;
 	align-items: center;
 	justify-content: left;
-	margin-left: 20px;
 	min-height: 70vh;
+}
+
+.messageContent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.message {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.mainContent {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-left: 20px;
+}
+
+.imageHolder img {
+	width: 50vw;
+	height: 50vh;
+	object-fit: contain;
+	margin: 14px auto;
 }
 
 .inputHolder {
@@ -151,8 +164,55 @@
 }
 
 .recentPrediction img {
-	width: 180px;
-	height: 180px;
-	object-fit: cover;
+	cursor: pointer;
+	width: 240px;
+	height: 200px;
+	object-fit: contain;
 	border-radius: 2px;
+	border: solid #000 1px;
+	background-color: #d400d450;
+	transition: ease-in 200ms;
+}
+
+.recentPrediction img:hover {
+	background-color: #d400d476;
+	transition: ease-in 200ms;
+}
+
+.loadContent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.loader {
+	width: 54px;
+	height: 54px;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	border: 3px solid #d400d4;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+.loader::after {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	border: 5px solid #222;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

@@ -91,7 +91,11 @@ function App() {
 	}, [imageUrl, isImageValid]);
 
 	if (isModelLoading) {
-		return <div>Loading...</div>;
+		return (
+			<div className='loadContent'>
+				<span class='loader'></span>
+			</div>
+		);
 	}
 
 	return (
@@ -122,34 +126,40 @@ function App() {
 				/>
 			</div>
 			<div className='mainWrapper'>
-				<div className='mainContent'>
-					<div className='imageHolder'>
+				{isImageValid ? (
+					<div className='mainContent'>
+						<div className='imageHolder'>
+							{isImageValid && imageUrl && (
+								<img
+									src={imageUrl}
+									alt='Upload preview'
+									crossOrigin='anonymous'
+									ref={imageRef}
+								/>
+							)}
+						</div>
 						{isImageValid && imageUrl && (
-							<img
-								src={imageUrl}
-								alt='Upload preview'
-								crossOrigin='anonymous'
-								ref={imageRef}
-							/>
+							<div className='buttonHolder'>
+								<button
+									className='button'
+									onClick={identify}
+								>
+									Identify
+								</button>
+								<button
+									className='button cancel'
+									onClick={cancel}
+								>
+									cancel
+								</button>
+							</div>
 						)}
 					</div>
-					{isImageValid && imageUrl && (
-						<div className='buttonHolder'>
-							<button
-								className='button'
-								onClick={identify}
-							>
-								Identify
-							</button>
-							<button
-								className='button cancel'
-								onClick={cancel}
-							>
-								cancel
-							</button>
-						</div>
-					)}
-				</div>
+				) : (
+					<div className='messageContent'>
+						<div className='message'>Please upload an image</div>
+					</div>
+				)}
 				{results !== null && results.length > 0 && (
 					<div className='resultsHolder'>
 						{results.map((result, index) => {
