@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Met-Image-Classy/static/css/main.26e284bd.css",
+    "main.js": "/Met-Image-Classy/static/js/main.a3128624.js",
+    "index.html": "/Met-Image-Classy/index.html",
+    "main.26e284bd.css.map": "/Met-Image-Classy/static/css/main.26e284bd.css.map",
+    "main.a3128624.js.map": "/Met-Image-Classy/static/js/main.a3128624.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26e284bd.css",
+    "static/js/main.a3128624.js"
+  ]
+}
